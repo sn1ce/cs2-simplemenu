@@ -18,21 +18,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Optional: Setup dotnet if you're using .NET builds
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
 
-      # Simulate your build or copy commands here
-      - name: Build step
+      - name: Simulate build output
         run: |
-          echo "Simulating build..."
           mkdir -p cs2-simplemenu
-          echo "plugin content" > cs2-simplemenu/plugin.sp
+          echo "plugin.sp content" > cs2-simplemenu/plugin.sp
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3.1.3
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
         with:
           name: cs2-simplemenu-artifact
           path: ./cs2-simplemenu
