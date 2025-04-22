@@ -1,4 +1,4 @@
-name: Build and Upload CS2 Plugin
+name: Dotnet Version Test
 
 on:
   push:
@@ -6,30 +6,18 @@ on:
       - main
   workflow_dispatch:
 
-permissions:
-  contents: read
-  actions: read
-
 jobs:
-  build-and-upload:
+  test-dotnet:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup .NET
+      - name: Setup .NET 8
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
 
-      - name: Simulate build output
-        run: |
-          mkdir -p cs2-simplemenu
-          echo "plugin.sp content" > cs2-simplemenu/plugin.sp
-
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: cs2-simplemenu-artifact
-          path: ./cs2-simplemenu
+      - name: Print .NET version
+        run: dotnet --version
