@@ -21,3 +21,6 @@ jobs:
 
       - name: Print .NET version
         run: dotnet --version
+
+      - name: List repo files
+        run: ls -la
