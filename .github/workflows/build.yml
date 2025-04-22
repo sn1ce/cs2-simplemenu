@@ -25,12 +25,11 @@ jobs:
       - name: Build plugin
         run: dotnet build simplemenuplugin.csproj -c Release
 
-      - name: Zip build output
+      - name: Zip plugin files into plugins/SimpleMenuPlugin/
         run: |
-          mkdir -p release
-          cp ./bin/Release/net8.0/* ./release/
-          cd release
-          zip ../simplemenuplugin.zip *
+          mkdir -p plugins/SimpleMenuPlugin
+          cp ./bin/Release/net8.0/* plugins/SimpleMenuPlugin/
+          zip -r simplemenuplugin.zip plugins
 
       - name: Create GitHub Release
         id: create_release
