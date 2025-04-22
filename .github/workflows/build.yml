@@ -23,4 +23,4 @@ jobs:
         run: dotnet --version
 
       - name: List repo files
-        run: ls -la
+        run: dotnet build -c Release
