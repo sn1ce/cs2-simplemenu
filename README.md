@@ -1,2 +1,11 @@
-﻿# Hello World
-This is a minimal "Hello World" example that executes code on load & unload.
+﻿# Simple Menu Plugin
+
+## Requirements
+
+
+## What does it do?
+
+
+
+## Installation
+
