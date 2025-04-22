@@ -30,8 +30,8 @@ jobs:
           mkdir -p output
           cp bin/Release/net8.0/*.dll output/
       
-      - name: Upload artifact
+      - name: Upload build artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: SimpleMenuPlugin
-          path: output/
+          name: cs2-simplemenu-artifact
+          path: ./cs2-simplemenu
