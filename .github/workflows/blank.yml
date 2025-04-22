@@ -1,0 +1,37 @@
+name: Build CS2 Plugin
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.x'
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build plugin
+        run: dotnet build --configuration Release
+
+      - name: Publish plugin DLL
+        run: |
+          mkdir -p output
+          cp bin/Release/net8.0/*.dll output/
+      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: SimpleMenuPlugin
+          path: output/
