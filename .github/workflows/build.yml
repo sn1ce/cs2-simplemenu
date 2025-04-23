@@ -2,8 +2,8 @@ name: Build and Release CS2 Plugin
 
 on:
   push:
-    branches:
-      - master
+    tags:
+      - 'v*.*.*'
   workflow_dispatch:
 
 permissions:
@@ -25,14 +25,17 @@ jobs:
       - name: Build plugin
         run: dotnet build simplemenuplugin.csproj -c Release
 
-      - name: Zip plugin files into plugins/SimpleMenuPlugin/
+      - name: Package plugin
         run: |
           mkdir -p plugins/SimpleMenuPlugin
           cp ./bin/Release/net8.0/* plugins/SimpleMenuPlugin/
           zip -r simplemenuplugin.zip plugins
 
-      - name: Upload Build Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: SimpleMenuPlugin
-          path: simplemenuplugin.zip
+      - name: Create GitHub Release
+        run: |
+          gh release create "$GITHUB_REF_NAME" \
+            --title "SimpleMenuPlugin $GITHUB_REF_NAME" \
+            --notes "Automated release of SimpleMenuPlugin version $GITHUB_REF_NAME" \
+            simplemenuplugin.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
