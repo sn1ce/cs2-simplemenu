@@ -1,4 +1,4 @@
-name: Build and Release CS2 Plugin
+name: Build and Release CS2-SimpleMenuPlugin
 
 on:
   push:
@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup .NET 8
         uses: actions/setup-dotnet@v4
@@ -25,29 +25,17 @@ jobs:
       - name: Build plugin
         run: dotnet build simplemenuplugin.csproj -c Release
 
-      - name: Zip plugin files into plugins/SimpleMenuPlugin/
+      - name: Package plugin files
         run: |
           mkdir -p plugins/SimpleMenuPlugin
           cp ./bin/Release/net8.0/* plugins/SimpleMenuPlugin/
           zip -r simplemenuplugin.zip plugins
 
       - name: Create GitHub Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ github.ref_name }}
-          release_name: SimpleMenuPlugin${{ github.ref_name }}
-          draft: false
-          prerelease: false
-
-      - name: Upload Release ZIP
-        uses: actions/upload-release-asset@v1
+          name: "SimpleMenuPlugin ${{ github.ref_name }}"
+          files: simplemenuplugin.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./simplemenuplugin.zip
-          asset_name: simplemenuplugin.zip
-          asset_content_type: application/zip
