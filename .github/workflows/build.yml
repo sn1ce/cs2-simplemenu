@@ -1,9 +1,9 @@
-name: Build and Release CS2-SimpleMenuPlugin
+name: Build and Release CS2 Plugin
 
 on:
   push:
-    tags:
-      - 'v*.*.*'
+    branches:
+      - master
   workflow_dispatch:
 
 permissions:
@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Setup .NET 8
         uses: actions/setup-dotnet@v4
@@ -25,17 +25,14 @@ jobs:
       - name: Build plugin
         run: dotnet build simplemenuplugin.csproj -c Release
 
-      - name: Package plugin files
+      - name: Zip plugin files into plugins/SimpleMenuPlugin/
         run: |
           mkdir -p plugins/SimpleMenuPlugin
           cp ./bin/Release/net8.0/* plugins/SimpleMenuPlugin/
           zip -r simplemenuplugin.zip plugins
 
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
         with:
-          tag_name: ${{ github.ref_name }}
-          name: "SimpleMenuPlugin ${{ github.ref_name }}"
-          files: simplemenuplugin.zip
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          name: SimpleMenuPlugin
+          path: simplemenuplugin.zip
