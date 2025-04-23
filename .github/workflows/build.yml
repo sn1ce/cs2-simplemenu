@@ -1,4 +1,4 @@
-name: Build and Release CS2 Plugin
+name: Build and Release CS2-SimpleMenuPlugin
 
 on:
   push:
