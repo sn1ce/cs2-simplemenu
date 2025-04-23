@@ -2,12 +2,12 @@ name: Build and Release CS2 Plugin
 
 on:
   push:
-    branch:
-      - master
+    tags:
+      - 'v*.*.*'
   workflow_dispatch:
 
 permissions:
-  contents: write  # Needed for creating releases and uploading assets
+  contents: write
 
 jobs:
   build-and-release:
@@ -38,7 +38,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref_name }}
-          release_name: Release ${{ github.ref_name }}
+          release_name: SimpleMenuPlugin${{ github.ref_name }}
           draft: false
           prerelease: false
 
