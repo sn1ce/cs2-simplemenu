@@ -3,12 +3,14 @@
 A Counter-Strike 2 plugin that adds an in-game menu for players to perform simple actions via chat commands. This plugin is developed for an internal server which provides the functionality to change maps, toggle BHop, restart rounds, and more.  
 It's designed for community use—so everyone can control things without needing admin permissions. Powered by [CounterStrikeSharp](https://github.com/roflmuffin/CounterStrikeSharp) and [CS2MenuManager](https://github.com/schwarper/CS2MenuManager).
 
+You can also now create your own Menus, when successfully loaded, you will find the file here -> "/addons/counterstrikesharp/configs/SimpleMenuPlugin/menus.json"
+
 ---
 
 ## ✅ Requirements
 
 - [CounterStrikeSharp](https://github.com/roflmuffin/CounterStrikeSharp) (latest version)
-- CS2MenuManager dependency (automatically handled via NuGet or manually included)
+- [CS2MenuManager](https://github.com/schwarper/CS2MenuManager) (latest version)
 ---
 
 ## 🎮 What does it do?
