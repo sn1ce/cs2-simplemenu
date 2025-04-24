@@ -55,9 +55,9 @@ public class SimpleMenuPlugin : BasePlugin
             "Title": "Fun Stuff",
             "Items": [
             {
-                "Label": "Enable God Mode",
-                "Command": "god",
-                "Message": "God mode activated!"
+                "Label": "Enable Cheats",
+                "Command": "sv_cheats 1",
+                "Message": "Cheats activated!"
             },
             {
                 "Label": "Give Deagle",
