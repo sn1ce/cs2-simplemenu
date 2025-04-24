@@ -1,9 +1,9 @@
 ﻿# Simple Menu Plugin
 
 A Counter-Strike 2 plugin that adds an in-game menu for players to perform simple actions via chat commands. This plugin is developed for an internal server which provides the functionality to change maps, toggle BHop, restart rounds, and more.  
-It's designed for community use—so everyone can control things without needing admin permissions. Powered by [CounterStrikeSharp](https://github.com/roflmuffin/CounterStrikeSharp) and [CS2MenuManager](https://github.com/schwarper/CS2MenuManager).
+It's designed for community use — so everyone can control things without needing admin permissions. Powered by [CounterStrikeSharp](https://github.com/roflmuffin/CounterStrikeSharp) and [CS2MenuManager](https://github.com/schwarper/CS2MenuManager).
 
-You can also now create your own Menus, when successfully loaded, you will find the file here -> "/addons/counterstrikesharp/configs/SimpleMenuPlugin/menus.json"
+You can also now create your own Menus, when successfully loaded, you will find the file here -> `/addons/counterstrikesharp/configs/SimpleMenuPlugin/menus.json`
 
 ---
 
@@ -25,7 +25,7 @@ This plugin adds a customizable in-game menu, accessible via chat, to perform va
 Commands available:
 
 - `!sn_menu` – Opens the main menu
-- `!ws <workshop_id>` – Instantly changes to a workshop map
+- `!ws <workshop_id>` – Instantly (if already downloaded) changes to a workshop map 
 - `!tz_menu` - just as an example
 - `!fun_menu` - also just as an example
 
@@ -33,7 +33,12 @@ Commands available:
 
 ## 📦 Installation
 
-1. **Build the plugin** (or download the release ZIP):
+1. **download the plugin** :
+   - Download latest version [here](https://github.com/sn1ce/cs2-simplemenu/releases)
+   - extract the files to your addons/counterstrikesharp/plugins folder
+   - after finishing 4. (restart) there is a custom menu available, see above
+
+2. **Build the plugin** :
    - Clone the repo or download a release
    - Run:  
      ```bash
@@ -41,15 +46,15 @@ Commands available:
      ```
    - Output: `SimpleMenuPlugin.dll` and dependencies
 
-2. **Copy to your server:**
+3. **Copy to your server:**
    - Upload the folder `plugins/SimpleMenuPlugin` to:
      ```
      csgo/addons/counterstrikesharp/plugins/
      ```
 
-3. **Restart your CS2 server**
+4. **Restart your CS2 server**
 
-4. ✅ Done! Join and type `!sn_menu` to use it.
+5. ✅ Done! Join and type `!sn_menu` to use it.
 
 ---
 
