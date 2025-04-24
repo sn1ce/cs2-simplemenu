@@ -12,12 +12,21 @@ using System.Linq;
 public class SimpleMenuPlugin : BasePlugin
 {
     public override string ModuleName => "SimpleMenuPlugin";
-    public override string ModuleVersion => "1.1.0";
+    public override string ModuleVersion => "1.0.5";
     public override string ModuleAuthor => "yourname";
     public override string ModuleDescription => "Menu & Workshop switching via chat";
 
     public override void Load(bool hotReload)
     {
+        Console.WriteLine(@"
+          _____  __  __ ____  
+         / ____||  \/  |  _ \ 
+        | (___  | \  / | |_) |
+         \___ \ | |\/| |  _ < 
+         ____) || |  | | |_) |
+        |_____/ |_|  |_|____/ 
+        SIMPLE MENU PLUGIN
+        ");
         AddCommandListener("say", (player, command) =>
         {
             if (player == null)
