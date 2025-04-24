@@ -23,7 +23,7 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Build plugin
-        run: dotnet build simplemenuplugin.csproj -c Release
+        run: dotnet build SimpleMenuPlugin.csproj -c Release
 
       - name: Package plugin
         run: |
