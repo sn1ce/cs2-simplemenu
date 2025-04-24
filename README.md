@@ -26,6 +26,8 @@ Commands available:
 
 - `!sn_menu` – Opens the main menu
 - `!ws <workshop_id>` – Instantly changes to a workshop map
+- `!tz_menu` - just as an example
+- `!fun_menu` - also just as an example
 
 ---
 
