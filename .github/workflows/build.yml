@@ -30,12 +30,27 @@ jobs:
           mkdir -p plugins/SimpleMenuPlugin
           cp ./bin/Release/net8.0/* plugins/SimpleMenuPlugin/
           zip -r simplemenuplugin.zip plugins
+      - name: Generate changelog
+        id: changelog
+        run: |
+          # Get the previous tag (if any)
+          PREV_TAG=$(git tag --sort=-creatordate | grep -v "${{ github.ref_name }}" | head -n 1)
+          echo "Previous tag: $PREV_TAG"
+          if [ -n "$PREV_TAG" ]; then
+            LOG=$(git log "$PREV_TAG"..HEAD --pretty=format:"- %s")
+          else
+            LOG=$(git log --pretty=format:"- %s")
+          fi
+          echo "$LOG"
+          echo "changelog<<EOF" >> $GITHUB_OUTPUT
+          echo "$LOG" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Create GitHub Release
         run: |
           gh release create "$GITHUB_REF_NAME" \
             --title "SimpleMenuPlugin $GITHUB_REF_NAME" \
-            --notes "Automated release of SimpleMenuPlugin version $GITHUB_REF_NAME" \
+            --notes "${{ steps.changelog.outputs.changelog }}" \
             simplemenuplugin.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
