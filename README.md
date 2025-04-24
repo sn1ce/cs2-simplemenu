@@ -5,6 +5,8 @@ It's designed for community use — so everyone can control things without needi
 
 You can also now create your own Menus, when successfully loaded, you will find the file here -> `/addons/counterstrikesharp/configs/SimpleMenuPlugin/menus.json`
 
+![SimpleMenuPlugin Preview](https://github.com/sn1ce/cs2-simplemenu/raw/master/image-1745516868910.png)
+
 ---
 
 ## ✅ Requirements
